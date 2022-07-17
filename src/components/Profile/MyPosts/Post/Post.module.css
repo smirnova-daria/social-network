@@ -1,0 +1,19 @@
+
+.post__wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.post__message {
+  display: inline-block;
+}
+.likes {
+  display: block;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,16 @@
+.posts__new {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.posts__new textarea {
+  max-width: 50%;
+}
+.posts__new button {
+  width: 130px;
+  height: 40px;
+  cursor: pointer;
+}
+.posts__list {
+  padding-top: 30px;
+}
