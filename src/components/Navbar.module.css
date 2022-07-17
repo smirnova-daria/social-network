@@ -1,0 +1,20 @@
+.menu {
+  background-color: rgb(79, 161, 255);
+  grid-area: menu;
+}
+.menu__list {
+  list-style: none;
+  padding: 20px 15px;
+}
+.menu__list li:not(:last-child) {
+  margin-bottom: 20px;
+}
+.menu__link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.menu__link:hover {
+  color: #000;
+}

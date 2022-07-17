@@ -1,0 +1,16 @@
+.header {
+  background-color: rgb(79, 161, 255);
+  height: 60px;
+  grid-area: header;
+}
+.logo {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 80%;
+  vertical-align: middle;
+  margin-left: 15px;
+}
