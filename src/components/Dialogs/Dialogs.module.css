@@ -1,0 +1,10 @@
+.content {
+	display: grid;
+	grid-template-columns: 2fr 5fr;
+}
+.dialog {
+	font-weight: 600;
+}
+.dialog_active {
+	color: rgb(255, 145, 0);
+}

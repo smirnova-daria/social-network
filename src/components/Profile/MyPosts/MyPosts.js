@@ -2,6 +2,10 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 const MyPosts = () => {
+  const postsData = [
+    { id: 1, message: "Hey, how are you?", likesCount: 10 },
+    { id: 2, message: "It's my first post", likesCount: 12 },
+  ];
   return (
     <div>
       <h3>Мои посты</h3>
@@ -11,8 +15,9 @@ const MyPosts = () => {
         <button type="submit">Опубликовать</button>
       </form>
       <ul className={s.posts__list}>
-        <Post message="Hey, how are you?" likes="10" />
-        <Post message="It's my first post" likes="20" />
+        {postsData.map((p) => (
+          <Post message={p.message} likes={p.likesCount} />
+        ))}
       </ul>
     </div>
   );

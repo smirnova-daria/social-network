@@ -16,11 +16,19 @@ function App() {
         <Navbar />
         <main className="main">
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dialogs" element={<Dialogs />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/photos" element={<Photos />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="dialogs/*" element={<Dialogs />} />
+            <Route path="news" element={<News />} />
+            <Route path="photos" element={<Photos />} />
+            <Route path="settings" element={<Settings />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
           </Routes>
         </main>
       </div>
