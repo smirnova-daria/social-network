@@ -18,3 +18,7 @@ ul {
     "menu main";
   grid-gap: 15px;
 }
+
+.main {
+  grid-area: main;
+}

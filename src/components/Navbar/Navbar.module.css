@@ -9,7 +9,8 @@
 .menu__list li:not(:last-child) {
   margin-bottom: 20px;
 }
-.menu__link {
+.menu__link,
+.menu__link_active {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
@@ -17,4 +18,7 @@
 }
 .menu__link:hover {
   color: #000;
+}
+.menu__link_active {
+  color: gold;
 }
