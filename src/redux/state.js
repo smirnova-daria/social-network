@@ -37,10 +37,11 @@ export const addPost = () => {
     likesCount: 0,
   };
   state.profilePage.posts.push(newPost);
-  updatePostText("");
+  state.profilePage.newPostText = "";
   renderAllTree(state);
 };
 export const updatePostText = (text) => {
   state.profilePage.newPostText = text;
+  renderAllTree(state);
 };
 export default state;

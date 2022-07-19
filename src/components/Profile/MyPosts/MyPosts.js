@@ -20,6 +20,7 @@ const MyPosts = (props) => {
           name="post-text"
           ref={newPostTextarea}
           onChange={changePostText}
+          value={props.newPostText}
         ></textarea>
         <button type="submit" onClick={addPost}>
           Опубликовать
