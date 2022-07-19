@@ -1,0 +1,21 @@
+.friends {
+	display: flex;
+	margin-top: 10px;
+	justify-content: space-between;
+}
+.friend {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.friend__img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: gold;
+	border-radius: 50%;
+}
+.friend__name {
+	color: #fff;
+	font-weight: 500;
+}

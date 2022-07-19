@@ -9,12 +9,12 @@ const Dialogs = (props) => {
       <h2>Диалоги</h2>
       <div className={s.content}>
         <div className={s.dialogs}>
-          {props.dialogs.map((d) => (
+          {props.state.dialogs.map((d) => (
             <DialogItem name={d.name} id={d.id} />
           ))}
         </div>
         <div className={s.messages}>
-          {props.messages.map((m) => (
+          {props.state.messages.map((m) => (
             <Message message={m.message} />
           ))}
         </div>
