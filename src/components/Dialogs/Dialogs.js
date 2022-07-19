@@ -4,6 +4,14 @@ import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
+  const newMessageTextaera = React.createRef();
+
+  const addMessage = (event) => {
+    event.preventDefault();
+    const text = newMessageTextaera.current.value;
+    alert(text);
+    newMessageTextaera.current.value = "";
+  };
   return (
     <div>
       <h2>Диалоги</h2>
@@ -17,6 +25,12 @@ const Dialogs = (props) => {
           {props.state.messages.map((m) => (
             <Message message={m.message} />
           ))}
+          <form className={s.message__form}>
+            <textarea ref={newMessageTextaera}></textarea>
+            <button type="submit" onClick={addMessage}>
+              Отправить
+            </button>
+          </form>
         </div>
       </div>
     </div>
