@@ -6,7 +6,7 @@ const MyPosts = (props) => {
   const addPost = (event) => {
     event.preventDefault();
     const text = newPostTextarea.current.value;
-    alert(text);
+    props.addPost(text);
     newPostTextarea.current.value = "";
   };
   return (

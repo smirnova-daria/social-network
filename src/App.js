@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import News from "./components/News/News";
 import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
-import Friends from "./components/Navbar/Friends/Friends";
 
 function App(props) {
   return (
@@ -19,7 +18,12 @@ function App(props) {
           <Routes>
             <Route
               path="profile"
-              element={<Profile state={props.state.profilePage} />}
+              element={
+                <Profile
+                  state={props.state.profilePage}
+                  addPost={props.addPost}
+                />
+              }
             />
             <Route
               path="dialogs/*"
