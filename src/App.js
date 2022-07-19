@@ -22,6 +22,7 @@ function App(props) {
                 <Profile
                   state={props.state.profilePage}
                   addPost={props.addPost}
+                  updatePostText={props.updatePostText}
                 />
               }
             />

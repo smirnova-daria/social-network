@@ -5,16 +5,22 @@ const MyPosts = (props) => {
   const newPostTextarea = React.createRef();
   const addPost = (event) => {
     event.preventDefault();
+    props.addPost();
+  };
+  const changePostText = () => {
     const text = newPostTextarea.current.value;
-    props.addPost(text);
-    newPostTextarea.current.value = "";
+    props.updatePostText(text);
   };
   return (
     <div>
       <h3>Мои посты</h3>
       <form className={s.posts__new}>
         <label>Добавить новый пост</label>
-        <textarea name="post-text" ref={newPostTextarea}></textarea>
+        <textarea
+          name="post-text"
+          ref={newPostTextarea}
+          onChange={changePostText}
+        ></textarea>
         <button type="submit" onClick={addPost}>
           Опубликовать
         </button>
