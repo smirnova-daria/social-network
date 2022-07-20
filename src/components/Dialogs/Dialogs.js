@@ -1,16 +1,21 @@
 import React from "react";
+import {
+  sendMessageActionCreator,
+  updateMessageTextActionCreator,
+} from "../../redux/state";
 import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  const newMessageTextaera = React.createRef();
-
-  const addMessage = (event) => {
+  const sendMessage = (event) => {
     event.preventDefault();
-    const text = newMessageTextaera.current.value;
-    alert(text);
-    newMessageTextaera.current.value = "";
+    const text = props.state.newMessageText;
+    props.dispatch(sendMessageActionCreator(text));
+  };
+  const onMessageTextChange = (event) => {
+    const text = event.target.value;
+    props.dispatch(updateMessageTextActionCreator(text));
   };
   return (
     <div>
@@ -26,8 +31,11 @@ const Dialogs = (props) => {
             <Message message={m.message} />
           ))}
           <form className={s.message__form}>
-            <textarea ref={newMessageTextaera}></textarea>
-            <button type="submit" onClick={addMessage}>
+            <textarea
+              value={props.state.newMessageText}
+              onChange={onMessageTextChange}
+            ></textarea>
+            <button type="submit" onClick={sendMessage}>
               Отправить
             </button>
           </form>

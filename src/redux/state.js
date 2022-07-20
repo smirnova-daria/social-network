@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
+const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
+const SEND_MESSAGE = "SEND_MESSAGE";
 export const store = {
   _state: {
     profilePage: {
@@ -21,6 +23,7 @@ export const store = {
         { id: 2, message: "Как продвигается обучение?" },
         { id: 3, message: "Yo" },
       ],
+      newMessageText: "",
     },
     navbar: {
       friends: [
@@ -54,6 +57,14 @@ export const store = {
     } else if (action.type === UPDATE_POST_TEXT) {
       this._state.profilePage.newPostText = action.text;
       this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      const newMessage = { id: 4, message: action.message };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.message;
+      this._callSubscriber(this._state);
     }
   },
 };
@@ -63,3 +74,13 @@ export const updatePostTextActionCreator = (text) => ({
   type: UPDATE_POST_TEXT,
   text,
 });
+export const sendMessageActionCreator = (message) => ({
+  type: SEND_MESSAGE,
+  message,
+});
+export const updateMessageTextActionCreator = (message) => ({
+  type: UPDATE_MESSAGE_TEXT,
+  message,
+});
+
+window.store = store;
