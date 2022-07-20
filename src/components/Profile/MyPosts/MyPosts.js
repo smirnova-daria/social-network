@@ -10,12 +10,12 @@ const MyPosts = (props) => {
 
   const addPost = (event) => {
     event.preventDefault();
-    props.dispatch(addPostActionCreator());
+    props.addPost();
   };
 
   const changePostText = () => {
     const text = newPostTextarea.current.value;
-    props.dispatch(updatePostTextActionCreator(text));
+    props.updatePostText(text);
   };
   return (
     <div>
