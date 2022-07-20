@@ -5,11 +5,11 @@ const MyPosts = (props) => {
   const newPostTextarea = React.createRef();
   const addPost = (event) => {
     event.preventDefault();
-    props.addPost();
+    props.dispatch({ type: "ADD-POST" });
   };
   const changePostText = () => {
     const text = newPostTextarea.current.value;
-    props.updatePostText(text);
+    props.dispatch({ type: "UPDATE-POST-TEXT", text });
   };
   return (
     <div>
