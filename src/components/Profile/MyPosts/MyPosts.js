@@ -1,15 +1,21 @@
 import React from "react";
+import {
+  addPostActionCreator,
+  updatePostTextActionCreator,
+} from "../../../redux/state";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 const MyPosts = (props) => {
   const newPostTextarea = React.createRef();
+
   const addPost = (event) => {
     event.preventDefault();
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch(addPostActionCreator());
   };
+
   const changePostText = () => {
     const text = newPostTextarea.current.value;
-    props.dispatch({ type: "UPDATE-POST-TEXT", text });
+    props.dispatch(updatePostTextActionCreator(text));
   };
   return (
     <div>
