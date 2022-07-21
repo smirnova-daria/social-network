@@ -13,7 +13,7 @@ function App(props) {
     <BrowserRouter>
       <div className="container">
         <Header />
-        {/* <Navbar state={props.store.getState().navbar} /> */}
+        <Navbar />
         <main className="main">
           <Routes>
             <Route path="profile" element={<Profile store={props.store} />} />

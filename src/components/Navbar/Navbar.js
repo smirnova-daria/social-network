@@ -56,7 +56,7 @@ const Navbar = (props) => {
             Настройки
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/friends"
             className={(data) =>
@@ -66,7 +66,7 @@ const Navbar = (props) => {
             Друзья
           </NavLink>
           <Friends friends={props.state.friends} />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
