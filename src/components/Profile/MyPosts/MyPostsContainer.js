@@ -30,7 +30,7 @@ const mapStateToProps = (state) => {
     newPostText: state.profilePage.newPostText,
   };
 };
-const mapStateToDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addPost: () => {
       dispatch(addPostActionCreator());
@@ -40,6 +40,6 @@ const mapStateToDispatch = (dispatch) => {
     },
   };
 };
-const MyPostsContainer = connect(mapStateToProps, mapStateToDispatch)(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

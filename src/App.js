@@ -7,6 +7,7 @@ import News from "./components/News/News";
 import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
   return (
@@ -24,6 +25,10 @@ function App(props) {
             <Route path="news" element={<News />} />
             <Route path="photos" element={<Photos />} />
             <Route path="settings" element={<Settings />} />
+            <Route
+              path="users"
+              element={<UsersContainer store={props.store} />}
+            />
             <Route
               path="*"
               element={

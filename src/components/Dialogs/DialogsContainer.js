@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapStateToDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     updateMessageText: (text) => {
       dispatch(updateMessageTextActionCreator(text));
@@ -41,5 +41,5 @@ const mapStateToDispatch = (dispatch) => {
     },
   };
 };
-const DialogsContainer = connect(mapStateToProps, mapStateToDispatch)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
