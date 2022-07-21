@@ -19,12 +19,12 @@ const Dialogs = (props) => {
       <div className={s.content}>
         <div className={s.dialogs}>
           {props.dialogs.map((d) => (
-            <DialogItem name={d.name} id={d.id} />
+            <DialogItem name={d.name} id={d.id} key={d.id} />
           ))}
         </div>
         <div className={s.messages}>
           {props.messages.map((m) => (
-            <Message message={m.message} />
+            <Message message={m.message} key={m.id} />
           ))}
           <form className={s.message__form}>
             <textarea

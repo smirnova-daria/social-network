@@ -34,7 +34,7 @@ const MyPosts = (props) => {
       </form>
       <ul className={s.posts__list}>
         {props.posts.map((p) => (
-          <Post message={p.message} likes={p.likesCount} />
+          <Post message={p.message} likes={p.likesCount} key={p.id} />
         ))}
       </ul>
     </div>
