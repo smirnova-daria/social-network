@@ -1,9 +1,9 @@
 import React from "react";
-
+import userPhoto from "../../../assets/images/userPhoto.png";
 const User = (props) => {
   return (
     <div>
-      <img src={props.user.photo} width="50px" />
+      <img src={props.user.photos.small || userPhoto} width="50px" alt="user" />
       {props.user.follow ? (
         <button
           onClick={() => {
@@ -21,10 +21,10 @@ const User = (props) => {
           Follow
         </button>
       )}
-      <span>{props.user.fullName} </span>
+      <span>{props.user.name} </span>
       <span>{props.user.status} </span>
-      <span>{props.user.location.country} </span>
-      <span>{props.user.location.city} </span>
+      <span>{"country"} </span>
+      <span>{"city"} </span>
     </div>
   );
 };
