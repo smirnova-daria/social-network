@@ -1,13 +1,10 @@
 import React from "react";
+import Preloader from "../UI/Preloader/Preloader";
 import User from "./User/User";
-import * as axios from "axios";
 import s from "./Users.module.css";
 
-
 const Users = (props) => {
-  let pagesCount = Math.ceil(
-    props.totalUsersCount / props.usersCountOnPage
-  );
+  let pagesCount = Math.ceil(props.totalUsersCount / props.usersCountOnPage);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     if (i === 50) {
@@ -18,6 +15,7 @@ const Users = (props) => {
 
   return (
     <div>
+      {props.isFetching ? <Preloader /> : null}
       <div>
         {pages.map((p) => (
           <span
@@ -42,5 +40,5 @@ const Users = (props) => {
       ))}
     </div>
   );
-}
+};
 export default Users;

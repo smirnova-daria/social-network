@@ -7,16 +7,19 @@ import {
   unfollowActionCreator,
   setTotalUsersCountActionCreator,
   setCurrentPageActionCreator,
+  toggleIsFetchingActionCreator,
 } from "../../redux/users-reducer";
 import Users from "./Users";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
+    this.props.toggleIsFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCountOnPage}&page=1`
       )
       .then((res) => {
+        this.props.toggleIsFetching(false);
         this.props.setUsers(res.data.items);
         this.props.setTotalUsersCount(res.data.totalCount);
       });
@@ -24,11 +27,16 @@ class UsersContainer extends React.Component {
 
   onPageChanged = (p) => {
     this.props.setCurrentPage(p);
+    this.props.toggleIsFetching(true);
+
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCountOnPage}&page=${p}`
       )
-      .then((res) => this.props.setUsers(res.data.items));
+      .then((res) => {
+        this.props.toggleIsFetching(false);
+        this.props.setUsers(res.data.items);
+      });
   };
 
   render() {
@@ -52,6 +60,7 @@ class UsersContainer extends React.Component {
         users={this.props.users}
         unfollow={this.props.unfollow}
         follow={this.props.follow}
+        isFetching={this.props.isFetching}
       />
     );
   }
@@ -63,6 +72,7 @@ const mapStateToProps = (state) => {
     usersCountOnPage: state.usersPage.usersCountOnPage,
     currentPage: state.usersPage.currentPage,
     totalUsersCount: state.usersPage.totalUsersCount,
+    isFetching: state.usersPage.isFetching,
   };
 };
 
@@ -82,6 +92,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setCurrentPage: (page) => {
       dispatch(setCurrentPageActionCreator(page));
+    },
+    toggleIsFetching: (isFetching) => {
+      dispatch(toggleIsFetchingActionCreator(isFetching));
     },
   };
 };
