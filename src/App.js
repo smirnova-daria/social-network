@@ -17,21 +17,14 @@ function App(props) {
         <Navbar />
         <main className="main">
           <Routes>
-            <Route
-              path="profile/*"
-              element={<ProfileContainer store={props.store} />}
-            />
-            <Route
-              path="dialogs/*"
-              element={<DialogsContainer store={props.store} />}
-            />
+            <Route path="profile/:userId" element={<ProfileContainer />} />
+            <Route path="profile" element={<ProfileContainer />} />
+
+            <Route path="dialogs/*" element={<DialogsContainer />} />
             <Route path="news" element={<News />} />
             <Route path="photos" element={<Photos />} />
             <Route path="settings" element={<Settings />} />
-            <Route
-              path="users"
-              element={<UsersContainer store={props.store} />}
-            />
+            <Route path="users" element={<UsersContainer />} />
             <Route
               path="*"
               element={
