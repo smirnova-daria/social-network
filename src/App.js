@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import News from "./components/News/News";
@@ -8,6 +7,7 @@ import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 function App(props) {
   return (
@@ -17,7 +17,10 @@ function App(props) {
         <Navbar />
         <main className="main">
           <Routes>
-            <Route path="profile" element={<Profile store={props.store} />} />
+            <Route
+              path="profile/*"
+              element={<ProfileContainer store={props.store} />}
+            />
             <Route
               path="dialogs/*"
               element={<DialogsContainer store={props.store} />}

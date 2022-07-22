@@ -1,9 +1,17 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import userPhoto from "../../../assets/images/userPhoto.png";
 const User = (props) => {
   return (
     <div>
-      <img src={props.user.photos.small || userPhoto} width="50px" alt="user" />
+      <NavLink to={`/profile/${props.user.id}`}>
+        <img
+          src={props.user.photos.small || userPhoto}
+          width="50px"
+          alt="user"
+        />
+      </NavLink>
+
       {props.user.follow ? (
         <button
           onClick={() => {
