@@ -16,6 +16,7 @@ const Users = (props) => {
   return (
     <div>
       {props.isFetching ? <Preloader /> : null}
+
       <div>
         {pages.map((p) => (
           <span
@@ -31,14 +32,7 @@ const Users = (props) => {
       </div>
 
       {props.users.map((u) => (
-        <User
-          key={u.id}
-          user={u}
-          unfollow={props.unfollow}
-          follow={props.follow}
-          followingProgress={props.followingProgress}
-          toggleFollowingProgress={props.toggleFollowingProgress}
-        />
+        <User {...props} key={u.id} user={u} />
       ))}
     </div>
   );

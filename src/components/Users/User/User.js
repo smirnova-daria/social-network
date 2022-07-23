@@ -1,9 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../../api/api";
 import userPhoto from "../../../assets/images/userPhoto.png";
 const User = (props) => {
-  
   return (
     <div>
       <NavLink to={`/profile/${props.user.id}`}>
@@ -18,13 +16,7 @@ const User = (props) => {
         <button
           disabled={props.followingProgress.some((id) => id === props.user.id)}
           onClick={() => {
-            props.toggleFollowingProgress(true, props.user.id);
-            usersAPI.unfollowUser(props.user.id).then((data) => {
-              if (data.resultCode === 0) {
-                props.unfollow(props.user.id);
-              }
-              props.toggleFollowingProgress(false, props.user.id);
-            });
+            props.unfollow(props.user.id);
           }}
         >
           Unfollow
@@ -33,14 +25,7 @@ const User = (props) => {
         <button
           disabled={props.followingProgress.some((id) => id === props.user.id)}
           onClick={() => {
-            props.toggleFollowingProgress(true, props.user.id);
-
-            usersAPI.followUser(props.user.id).then((data) => {
-              if (data.resultCode === 0) {
-                props.follow(props.user.id);
-              }
-              props.toggleFollowingProgress(false, props.user.id);
-            });
+            props.follow(props.user.id);
           }}
         >
           Follow
