@@ -1,6 +1,7 @@
 import React from "react";
 import Preloader from "../../UI/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -32,6 +33,7 @@ const ProfileInfo = (props) => {
           </ul>
         </div>
       </div>
+      <ProfileStatus status={props.status} changeStatus={props.changeStatus} />
     </div>
   );
 };

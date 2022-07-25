@@ -28,6 +28,12 @@ export const profileAPI = {
   getProfile(id) {
     return axiosSettings.get(`profile/${id}`).then((res) => res.data);
   },
+  getStatus(id) {
+    return axiosSettings.get(`profile/status/${id}`).then((res) => res.data);
+  },
+  setStatus() {
+    return axiosSettings.put(`profile/status`).then((res) => res.data);
+  },
 };
 
 export const authAPI = {

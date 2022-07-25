@@ -18,7 +18,6 @@ function App(props) {
         <Navbar />
         <main className="main">
           <Routes>
-            <Route path="login" element={<Login />} />
             <Route path="profile/:userId" element={<ProfileContainer />} />
             <Route path="profile" element={<ProfileContainer />} />
 
@@ -27,6 +26,7 @@ function App(props) {
             <Route path="photos" element={<Photos />} />
             <Route path="settings" element={<Settings />} />
             <Route path="users" element={<UsersContainer />} />
+            <Route path="login" element={<Login />} />
             <Route
               path="*"
               element={

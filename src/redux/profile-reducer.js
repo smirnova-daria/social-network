@@ -3,6 +3,9 @@ import { profileAPI } from "../api/api";
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
 const SET_PROFILE = "SET_PROFILE";
+const SET_STATUS = "SET_STATUS";
+const UPDATE_STATUS = "UPDATE_STATUS";
+
 const initialState = {
   posts: [
     { id: 1, message: "Hey, how are you?", likesCount: 10 },
@@ -10,6 +13,7 @@ const initialState = {
   ],
   newPostText: "",
   profile: null,
+  status: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -36,6 +40,12 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile,
       };
+    case SET_STATUS:
+      return {
+        ...state,
+        status: action.statusText,
+      };
+
     default:
       return state;
   }
@@ -48,11 +58,27 @@ export const updatePostTextActionCreator = (text) => ({
 });
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
 
+const setStatus = (statusText) => ({ type: SET_STATUS, statusText });
+
 export const getProfile = (userId) => {
   return (dispatch) => {
     profileAPI.getProfile(userId).then((data) => {
       dispatch(setProfile(data));
     });
+  };
+};
+
+export const getStatus = (userId) => {
+  return (dispatch) => {
+    profileAPI.getStatus(userId).then((data) => {
+      dispatch(setStatus(data));
+    });
+  };
+};
+
+export const changeStatus = (statusText) => {
+  return (dispatch) => {
+    dispatch(setStatus(statusText));
   };
 };
 
