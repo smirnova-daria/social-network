@@ -31,8 +31,12 @@ export const profileAPI = {
   getStatus(id) {
     return axiosSettings.get(`profile/status/${id}`).then((res) => res.data);
   },
-  setStatus() {
-    return axiosSettings.put(`profile/status`).then((res) => res.data);
+  updateStatus(status) {
+    return axiosSettings
+      .put(`profile/status`, {
+        status,
+      })
+      .then((res) => res.data);
   },
 };
 

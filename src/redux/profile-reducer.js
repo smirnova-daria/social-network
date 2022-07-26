@@ -76,9 +76,13 @@ export const getStatus = (userId) => {
   };
 };
 
-export const changeStatus = (statusText) => {
+export const updateStatus = (statusText) => {
   return (dispatch) => {
-    dispatch(setStatus(statusText));
+    profileAPI.updateStatus(statusText).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(setStatus(statusText));
+      }
+    });
   };
 };
 
