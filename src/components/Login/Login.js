@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import loginFormSchema from "../FormValidation/LoginFormSchema";
-
+import loginFormSchema from "../../utils/FormValidation/LoginFormSchema";
+import s from "./Login.module.css";
 const Login = () => (
   <div>
     <h1>Login</h1>
@@ -28,7 +28,7 @@ const Login = () => (
           <div>
             <Field type={"text"} name={"email"} placeholder={"e-mail"} />
           </div>
-          <ErrorMessage name="email" component="div" />
+          <ErrorMessage name="email" component="div" className={s.error} />
 
           <div>
             <Field
@@ -37,7 +37,7 @@ const Login = () => (
               placeholder={"password"}
             />
           </div>
-          <ErrorMessage name="password" component="div" />
+          <ErrorMessage name="password" component="div" className={s.error} />
 
           <div>
             <Field type={"checkbox"} name={"rememberMe"} />
