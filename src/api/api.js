@@ -44,4 +44,12 @@ export const authAPI = {
   getAuthUserData() {
     return axiosSettings.get(`auth/me`).then((res) => res.data);
   },
+  login(email, password, rememberMe = false) {
+    return axiosSettings
+      .post(`auth/login`, { email, password, rememberMe })
+      .then((res) => res.data);
+  },
+  logout() {
+    return axiosSettings.delete(`auth/login`).then((res) => res.data);
+  },
 };
