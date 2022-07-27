@@ -24,33 +24,41 @@ const Login = (props) => {
           }
           return errors;
         }}
-        onSubmit={(values) => {
-          props.login(values.email, values.password, values.rememberMe);
+        onSubmit={(values, { setSubmitting, setStatus }) => {
+          props.login(
+            values.email,
+            values.password,
+            values.rememberMe,
+            setStatus
+          );
+          setSubmitting(false);
         }}
         validationSchema={loginFormSchema}
       >
-        <Form>
-          <div>
-            <Field type={"text"} name={"email"} placeholder={"e-mail"} />
-          </div>
-          <ErrorMessage name="email" component="div" className={s.error} />
+        {({ status }) => (
+          <Form>
+            <div>
+              <Field type={"text"} name={"email"} placeholder={"e-mail"} />
+            </div>
+            <ErrorMessage name="email" component="div" className={s.error} />
 
-          <div>
-            <Field
-              type={"password"}
-              name={"password"}
-              placeholder={"password"}
-            />
-          </div>
-          <ErrorMessage name="password" component="div" className={s.error} />
+            <div>
+              <Field
+                type={"password"}
+                name={"password"}
+                placeholder={"password"}
+              />
+            </div>
+            <ErrorMessage name="password" component="div" className={s.error} />
 
-          <div>
-            <Field type={"checkbox"} name={"rememberMe"} />
-            <label htmlFor={"rememberMe"}> remember me </label>
-          </div>
-
-          <button type={"submit"}>Log in</button>
-        </Form>
+            <div>
+              <Field type={"checkbox"} name={"rememberMe"} />
+              <label htmlFor={"rememberMe"}> remember me </label>
+            </div>
+            <div>{status}</div>
+            <button type={"submit"}>Log in</button>
+          </Form>
+        )}
       </Formik>
     </div>
   );
