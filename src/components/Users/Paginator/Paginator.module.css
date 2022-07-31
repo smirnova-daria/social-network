@@ -1,0 +1,9 @@
+.active {
+	font-weight: 700;
+}
+.pageNumber {
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px 7px;
+	cursor: pointer;
+}
