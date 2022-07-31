@@ -6,13 +6,20 @@ import { connect } from "react-redux";
 import News from "./components/News/News";
 import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/UI/Preloader/Preloader";
+
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+const UsersContainer = React.lazy(() =>
+  import("./components/Users/UsersContainer")
+);
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,25 +33,27 @@ class App extends React.Component {
           <HeaderContainer />
           <Navbar />
           <main className="main">
-            <Routes>
-              <Route path="profile/:userId" element={<ProfileContainer />} />
-              <Route path="profile" element={<ProfileContainer />} />
+            <React.Suspense fallback={<Preloader />}>
+              <Routes>
+                <Route path="profile/:userId" element={<ProfileContainer />} />
+                <Route path="profile" element={<ProfileContainer />} />
 
-              <Route path="dialogs/*" element={<DialogsContainer />} />
-              <Route path="news" element={<News />} />
-              <Route path="photos" element={<Photos />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="users" element={<UsersContainer />} />
-              <Route path="login" element={<Login />} />
-              <Route
-                path="*"
-                element={
-                  <main style={{ padding: "1rem" }}>
-                    <p>There's nothing here!</p>
-                  </main>
-                }
-              />
-            </Routes>
+                <Route path="dialogs/*" element={<DialogsContainer />} />
+                <Route path="news" element={<News />} />
+                <Route path="photos" element={<Photos />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="users" element={<UsersContainer />} />
+                <Route path="login" element={<Login />} />
+                <Route
+                  path="*"
+                  element={
+                    <main style={{ padding: "1rem" }}>
+                      <p>There's nothing here!</p>
+                    </main>
+                  }
+                />
+              </Routes>
+            </React.Suspense>
           </main>
         </div>
       </BrowserRouter>
