@@ -38,6 +38,17 @@ export const profileAPI = {
       })
       .then((res) => res.data);
   },
+  savePhoto(file) {
+    const formData = new FormData();
+    formData.append("image", file);
+    return axiosSettings
+      .put(`profile/photo`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => res.data);
+  },
 };
 
 export const authAPI = {

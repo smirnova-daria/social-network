@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import News from "./components/News/News";
 import Photos from "./components/Photos/Photos";
@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     if (!this.props.initialized) return <Preloader />;
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div className="container">
           <HeaderContainer />
           <Navbar />
@@ -56,7 +56,7 @@ class App extends React.Component {
             </React.Suspense>
           </main>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
