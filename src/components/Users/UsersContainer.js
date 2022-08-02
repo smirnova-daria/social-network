@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { unfollow, follow, fetchUsers } from "../../redux/users-reducer";
+import { unfollow, follow, fetchUsers } from "../../redux/users-reducer.ts";
 import {
   getCurrentPage,
   getFollowingProgress,

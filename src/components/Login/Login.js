@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import loginFormSchema from "../../utils/FormValidation/LoginFormSchema";
 import s from "./Login.module.css";
 import { connect } from "react-redux";
-import { login } from "../../redux/auth-reducer";
+import { login } from "../../redux/auth-reducer.ts";
 import { Navigate } from "react-router-dom";
 
 const Login = (props) => {
@@ -25,7 +25,6 @@ const Login = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting, setStatus }) => {
-          
           props.login(
             values.email,
             values.password,

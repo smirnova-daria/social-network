@@ -8,7 +8,7 @@ import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import { initializeApp } from "./redux/app-reducer";
+import { initializeApp } from "./redux/app-reducer.ts";
 import Preloader from "./components/UI/Preloader/Preloader";
 
 const ProfileContainer = React.lazy(() =>
