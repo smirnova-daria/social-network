@@ -58,12 +58,20 @@ export const authAPI = {
   getAuthUserData() {
     return axiosSettings.get(`auth/me`).then((res) => res.data);
   },
-  login(email, password, rememberMe = false) {
+  login(email, password, rememberMe = false, captcha = null) {
     return axiosSettings
-      .post(`auth/login`, { email, password, rememberMe })
+      .post(`auth/login`, { email, password, rememberMe, captcha })
       .then((res) => res.data);
   },
   logout() {
     return axiosSettings.delete(`auth/login`).then((res) => res.data);
+  },
+};
+
+export const securityAPI = {
+  getCaptchaUrl() {
+    return axiosSettings
+      .get(`security/get-captcha-url`)
+      .then((res) => res.data);
   },
 };

@@ -25,10 +25,12 @@ const Login = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting, setStatus }) => {
+          console.log(values);
           props.login(
             values.email,
             values.password,
             values.rememberMe,
+            values.captcha,
             setStatus
           );
           setSubmitting(false);
@@ -55,6 +57,18 @@ const Login = (props) => {
               <Field type={"checkbox"} name={"rememberMe"} />
               <label htmlFor={"rememberMe"}> remember me </label>
             </div>
+
+            {props.captcha && (
+              <div>
+                <img src={props.captcha} alt="captcha" />
+                <Field
+                  type={"text"}
+                  name={"captcha"}
+                  placeholder={"anti-bot symbols"}
+                />
+              </div>
+            )}
+
             <div>{status}</div>
             <button type={"submit"}>Log in</button>
           </Form>
@@ -65,5 +79,6 @@ const Login = (props) => {
 };
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  captcha: state.auth.captchaUrl,
 });
 export default connect(mapStateToProps, { login })(Login);
