@@ -25,7 +25,7 @@ const Login = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting, setStatus }) => {
-          console.log(values);
+          
           props.login(
             values.email,
             values.password,

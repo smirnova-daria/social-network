@@ -13,12 +13,7 @@ const ProfileInfo = (props) => {
       props.savePhoto(e.target.files[0]);
     }
   };
-
-  const onSubmit = (values) => {
-    props.saveProfile(values).then(() => {
-      setEditMode(false);
-    });
-  };
+  
 
   if (!props.profile) {
     return <Preloader />;
@@ -36,7 +31,8 @@ const ProfileInfo = (props) => {
           <EditProfileForm
             profile={props.profile}
             contacts={props.profile.contacts}
-            onSubmit={onSubmit}
+            saveProfile={props.saveProfile}
+            editModeDisable={()=> setEditMode(false)}
           />
         ) : (
           <ProfileData
