@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Preloader from "../../UI/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/userPhoto.png";
+import ProfileData from "./ProfileData/ProfileData";
+import EditProfileForm from "./ProfileData/EditProfileForm";
 const ProfileInfo = (props) => {
+  const [editMode, setEditMode] = useState(false);
+
   const onMainPhotoSelected = (e) => {
     if (e.target.files.length) {
       props.savePhoto(e.target.files[0]);
     }
+  };
+
+  const onSubmit = (values) => {
+    props.saveProfile(values).then(() => {
+      setEditMode(false);
+    });
   };
 
   if (!props.profile) {
@@ -15,32 +25,28 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
-      <img
-        src="https://png.pngtree.com/thumb_back/fh260/background/20200731/pngtree-blue-carbon-background-with-sport-style-and-golden-light-image_371487.jpg"
-        className={s.profile_img}
-      />
-
       <div className={s.info}>
-        <img src={props.profile.photos.large || userPhoto} />
-        {props.isOwner && (
-          <input type={"file"} onChange={onMainPhotoSelected} />
-        )}
-        <div>
-          <p className={s.name}>{props.profile.fullName}</p>
-          <p className={s.about}>{props.profile.aboutMe}</p>
-          <h4>Contacts:</h4>
-          <ul>
-            <li>
-              <a href={props.profile.contacts.vk}>VK</a>
-            </li>
-            <li>
-              <a href={props.profile.contacts.twitter}>Twitter</a>
-            </li>
-            <li>
-              <a href={props.profile.contacts.instagram}>Insta</a>
-            </li>
-          </ul>
+        <div className={s.avatar}>
+          <img src={props.profile.photos.large || userPhoto} alt="avatar" />
+          {props.isOwner && (
+            <input type={"file"} onChange={onMainPhotoSelected} />
+          )}
         </div>
+        {editMode ? (
+          <EditProfileForm
+            profile={props.profile}
+            contacts={props.profile.contacts}
+            onSubmit={onSubmit}
+          />
+        ) : (
+          <ProfileData
+            profile={props.profile}
+            isOwner={props.isOwner}
+            editMode={() => {
+              setEditMode(true);
+            }}
+          />
+        )}
       </div>
       <ProfileStatusWithHooks
         status={props.status}

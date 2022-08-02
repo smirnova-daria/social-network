@@ -49,6 +49,9 @@ export const profileAPI = {
       })
       .then((res) => res.data);
   },
+  saveProfile(profile) {
+    return axiosSettings.put(`profile`, profile).then((res) => res.data);
+  },
 };
 
 export const authAPI = {
