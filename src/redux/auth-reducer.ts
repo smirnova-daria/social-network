@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { authAPI, securityAPI } from "../api/api";
+import { authAPI, securityAPI } from "../api/api.ts";
 import { AppStateType } from "./store-redux";
 import { ThunkAction } from "redux-thunk";
 
