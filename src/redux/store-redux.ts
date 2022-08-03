@@ -7,7 +7,7 @@ import usersReducer from "./users-reducer.ts";
 import thunkMiddleware from "redux-thunk";
 import appReducer from "./app-reducer.ts";
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
   navbar: navbarReducer,
@@ -16,12 +16,14 @@ const reducers = combineReducers({
   app: appReducer,
 });
 
+type RootReducerType = typeof rootReducer;
+export type AppStateType = ReturnType<RootReducerType>;
+
+//@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(
-  reducers,
-  /* preloadedState, */ composeEnhancers(applyMiddleware(thunkMiddleware))
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunkMiddleware))
 );
-
-// export const store = createStore(reducers, applyMiddleware(thunkMiddleware));
-
+//@ts-ignore
 window.store = store;

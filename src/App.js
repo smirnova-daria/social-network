@@ -12,13 +12,13 @@ import { initializeApp } from "./redux/app-reducer.ts";
 import Preloader from "./components/UI/Preloader/Preloader";
 
 const ProfileContainer = React.lazy(() =>
-  import("./components/Profile/ProfileContainer")
+  import("./components/Profile/ProfileContainer.tsx")
 );
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
 );
 const UsersContainer = React.lazy(() =>
-  import("./components/Users/UsersContainer")
+  import("./components/Users/UsersContainer.tsx")
 );
 
 class App extends React.Component {

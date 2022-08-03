@@ -15,8 +15,30 @@ import {
   useParams,
 } from "react-router-dom";
 import { compose } from "redux";
+import { ProfileType } from '../../types/types'
+import { AppStateType } from '../../redux/store-redux'
 
-class ProfileContainer extends React.Component {
+type MapStatePropsType = {
+  profile: ProfileType
+  status: string
+  authorizedUserId: number
+  isAuth: boolean
+  router: any
+}
+type MapDispatchPropsType = {
+  getProfile: (userId: number) => void
+  getStatus: (userId: number) => void
+  updateStatus: (status: string) => void
+  savePhoto: (file: any) => void
+  saveProfile: () => void
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType
+type StateType = {
+  redirect: boolean
+}
+
+class ProfileContainer extends React.Component<PropsType, StateType> {
   state = {
     redirect: false,
   };
@@ -38,7 +60,7 @@ class ProfileContainer extends React.Component {
     this.refreshProfile();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: PropsType, prevState: StateType) {
     if (this.props.router.params.userId !== prevProps.router.params.userId) {
       this.refreshProfile();
     }
@@ -51,7 +73,7 @@ class ProfileContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
   authorizedUserId: state.auth.id,
@@ -70,7 +92,7 @@ const withRouter = (Component) => {
 };
 
 export default compose(
-  connect(mapStateToProps, {
+  connect<MapStatePropsType, MapStatePropsType, {}, AppStateType>(mapStateToProps, {
     getProfile,
     getStatus,
     updateStatus,
