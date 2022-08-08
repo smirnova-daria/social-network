@@ -15,7 +15,7 @@ const ProfileContainer = React.lazy(() =>
   import("./components/Profile/ProfileContainer.tsx")
 );
 const DialogsContainer = React.lazy(() =>
-  import("./components/Dialogs/DialogsContainer")
+  import("./components/Dialogs/DialogsContainer.tsx")
 );
 const UsersContainer = React.lazy(() =>
   import("./components/Users/UsersContainer.tsx")

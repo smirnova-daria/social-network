@@ -1,10 +1,17 @@
 import React from "react";
+import { DialogType, MessageType } from "../../types/types";
 import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
-import NewMessageForm from "./NewMessageForm";
+import NewMessageForm from "./NewMessageForm.tsx";
 
-const Dialogs = (props) => {
+type PropsType = {
+  sendMessage: (messageText: string) => void
+  dialogs: Array<DialogType>
+  messages: Array<MessageType>
+}
+
+const Dialogs: React.FC<PropsType> = (props) => {
   const addNewMessage = (values) => {
     props.sendMessage(values.postText);
   };
@@ -22,15 +29,6 @@ const Dialogs = (props) => {
             <Message message={m.message} key={m.id} />
           ))}
           <NewMessageForm handleSubmit={addNewMessage} />
-          {/* <form className={s.message__form}>
-            <textarea
-              value={props.newMessageText}
-              onChange={onMessageTextChange}
-            ></textarea>
-            <button type="submit" onClick={sendMessage}>
-              Отправить
-            </button>
-          </form> */}
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import React from "react";
 
-const NewMessage = (props) => {
+// type PropsType = {
+//   handleSubmit: () => void
+// }
+
+const NewMessageForm = (props) => {
   return (
     <Formik initialValues={{ postText: "" }} onSubmit={props.handleSubmit}>
       {() => (
@@ -22,4 +26,4 @@ const NewMessage = (props) => {
   );
 };
 
-export default NewMessage;
+export default NewMessageForm;
