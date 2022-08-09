@@ -7,9 +7,10 @@ import News from "./components/News/News";
 import Photos from "./components/Photos/Photos";
 import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import { LoginPage } from "./components/Login/Login.tsx";
 import { initializeApp } from "./redux/app-reducer.ts";
 import Preloader from "./components/UI/Preloader/Preloader";
+import { UsersPage } from "./components/Users/UsersContainer.tsx";
 
 const ProfileContainer = React.lazy(() =>
   import("./components/Profile/ProfileContainer.tsx")
@@ -17,9 +18,9 @@ const ProfileContainer = React.lazy(() =>
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer.tsx")
 );
-const UsersContainer = React.lazy(() =>
-  import("./components/Users/UsersContainer.tsx")
-);
+// const UsersPage = React.lazy(() =>
+//   import("./components/Users/UsersContainer.tsx")
+// );
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,8 +43,8 @@ class App extends React.Component {
                 <Route path="news" element={<News />} />
                 <Route path="photos" element={<Photos />} />
                 <Route path="settings" element={<Settings />} />
-                <Route path="users" element={<UsersContainer />} />
-                <Route path="login" element={<Login />} />
+                <Route path="users" element={<UsersPage />} />
+                <Route path="login" element={<LoginPage />} />
                 <Route
                   path="*"
                   element={

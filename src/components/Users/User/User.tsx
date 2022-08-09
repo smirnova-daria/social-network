@@ -10,6 +10,7 @@ type PropsType = {
   follow: (userId: number) => void
 }
 const User: React.FC<PropsType> = (props) => {
+
   return (
     <div>
       <NavLink to={`/profile/${props.user.id}`}>
