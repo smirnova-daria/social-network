@@ -50,9 +50,9 @@ type CaptchaResponseType = {
   url: string
 }
 export const usersAPI = {
-  getUsers(usersCountOnPage: number, currentPage: number) {
+  getUsers(usersCountOnPage: number = 10, currentPage: number = 1, term: string = '', friend: null | boolean = null) {
     return axiosSettings
-      .get<GetItemsType>(`users?count=${usersCountOnPage}&page=${currentPage}`)
+      .get<GetItemsType>(`users?count=${usersCountOnPage}&page=${currentPage}&term=${term}` + (friend === null ? '' : `&friend=${friend}`))
       .then((res) => res.data);
   },
 
